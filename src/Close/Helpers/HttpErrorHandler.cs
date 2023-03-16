@@ -26,7 +26,6 @@ public static class HttpErrorHandler
             {
                 throw new CloseClientException(e.Message, httpResponseMessage);
             }
-            
         }
     }
 }
