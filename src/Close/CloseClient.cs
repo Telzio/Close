@@ -5,6 +5,7 @@ namespace Close;
 public interface ICloseClient
 {
     Leads Leads { get; }
+    Opportunities Opportunities { get; }
 }
 
 public class CloseClient : ICloseClient
@@ -16,5 +17,6 @@ public class CloseClient : ICloseClient
         _httpClient = httpClient;
     }
 
-    public Leads Leads => new(this);
+    public Leads Leads => new(this, "lead");
+    public Opportunities Opportunities => new(this, "opportunity");
 }

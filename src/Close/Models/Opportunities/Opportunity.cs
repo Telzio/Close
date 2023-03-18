@@ -4,7 +4,7 @@ using Close.Services.Interfaces;
 
 namespace Close.Models.Opportunities;
 
-public class Opportunity : IHasCreatedBy, IHasUpdatedBy
+public class Opportunity : ICloseEntity, IHasCreatedBy, IHasUpdatedBy
 {
     [JsonPropertyName("id")]
     public string Id { get; set; }

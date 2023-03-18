@@ -3,7 +3,7 @@ using Close.Services.Interfaces;
 
 namespace Close.Models.Opportunities;
 
-public class OpportunityCreateOptions : ICreateOptions
+public class OpportunityUpdateOptions : IUpdateOptions
 {
     [JsonPropertyName("lead_id")]
     public string LeadId { get; set; }

@@ -4,9 +4,9 @@ using Close.Services.Interfaces;
 
 namespace Close.Services;
 
-public class Leads : Service, IRetrievable<Lead>, IListable<Lead>, ICreatable<Lead, LeadCreateOptions>, IUpdatable<Lead, LeadUpdateOptions>, IDeletable
+public class Leads : Service<Lead>, IRetrievable<Lead>, IListable<Lead, LeadsListOptions>, ICreatable<Lead, LeadCreateOptions>, IUpdatable<Lead, LeadUpdateOptions>, IDeletable
 {
-    public Leads(CloseClient closeClient) : base(closeClient, "lead")
+    public Leads(CloseClient closeClient, string endpoint) : base(closeClient, endpoint)
     {
     }
     
@@ -15,9 +15,9 @@ public class Leads : Service, IRetrievable<Lead>, IListable<Lead>, ICreatable<Le
         return await _request.GetEntityAsync(id, cancellationToken);
     }
     
-    public async Task<CloseList<Lead>> ListAsync(ListRequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+    public async Task<CloseList<Lead>> ListAsync(LeadsListOptions options = null, CancellationToken cancellationToken = default)
     {
-        return await _request.ListEntitiesAsync(requestOptions, cancellationToken);
+        return await _request.ListEntitiesAsync(options, cancellationToken);
     }
     
     public async Task<Lead> CreateAsync(LeadCreateOptions createOptions, CancellationToken cancellationToken = default)
@@ -34,4 +34,6 @@ public class Leads : Service, IRetrievable<Lead>, IListable<Lead>, ICreatable<Le
     {
         return await _request.UpdateEntityAsync(id, updateOptions, cancellationToken);
     }
+
+  
 }

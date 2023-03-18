@@ -2,7 +2,7 @@ using Close.Models.Common;
 
 namespace Close.Services.Interfaces;
 
-public interface IListable<TEntity> where TEntity : ICloseEntity
+public interface IListable<TEntity, TListOptions> where TEntity : ICloseEntity where TListOptions : IListOptions
 {
-    Task<CloseList<TEntity>> ListAsync(ListRequestOptions requestOptions = null, CancellationToken cancellationToken = default);
+    Task<CloseList<TEntity>> ListAsync(TListOptions options, CancellationToken cancellationToken = default);
 }
