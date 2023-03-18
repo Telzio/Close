@@ -34,7 +34,7 @@ public class Request<TEntity> where TEntity : ICloseEntity
 
         return await SendAsync<TEntity>(request, cancellationToken);
     }
-
+    
     internal async Task<CloseList<TEntity>> ListEntitiesAsync<TRequestOptions>(TRequestOptions requestOptions, CancellationToken cancellationToken) where TRequestOptions : IRequestOptions
     {
         var uri = _httpClient.ClassUrl(_endpoint);

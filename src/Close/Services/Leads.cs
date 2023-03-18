@@ -24,16 +24,14 @@ public class Leads : Service<Lead>, IRetrievable<Lead>, IListable<Lead, LeadsLis
     {
         return await _request.CreateEntityAsync(createOptions, cancellationToken);
     }
-
-    public async Task DeleteAsync(string id, CancellationToken cancellationToken = default)
-    {
-        await _request.DeleteEntityAsync(id, cancellationToken);
-    }
-
+    
     public async Task<Lead> UpdateAsync(string id, LeadUpdateOptions updateOptions, CancellationToken cancellationToken = default)
     {
         return await _request.UpdateEntityAsync(id, updateOptions, cancellationToken);
     }
 
-  
+    public async Task DeleteAsync(string id, CancellationToken cancellationToken = default)
+    {
+        await _request.DeleteEntityAsync(id, cancellationToken);
+    }
 }

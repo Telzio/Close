@@ -1,4 +1,4 @@
-namespace Close.Models.Opportunities;
+namespace Close.Models.Statuses;
 
 public enum StatusType
 {
