@@ -1,5 +1,6 @@
 using System.Text.Json.Serialization;
 using Close.Models.Common;
+using Close.Services.Interfaces;
 
 namespace Close.Models.Contacts;
 

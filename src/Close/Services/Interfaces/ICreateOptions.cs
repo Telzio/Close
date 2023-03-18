@@ -1,4 +1,4 @@
-namespace Close.Models.Common;
+namespace Close.Services.Interfaces;
 
 public interface ICreateOptions
 {

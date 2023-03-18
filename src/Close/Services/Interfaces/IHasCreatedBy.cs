@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace Close.Models.Common;
+namespace Close.Services.Interfaces;
 
 public interface IHasCreatedBy
 {

@@ -4,6 +4,7 @@ using System.Text.Json.Serialization;
 using Close.Extensions;
 using Close.Helpers;
 using Close.Models.Common;
+using Close.Services.Interfaces;
 
 namespace Close.Services;
 
@@ -59,6 +60,21 @@ public class Request<TEntity> where TEntity : ICloseEntity
         {
             RequestUri = _httpClient.ClassUrl(_endpoint),
             Method = HttpMethod.Post,
+            Content = content,
+        };
+        
+        return await SendAsync<TEntity>(request, cancellationToken);
+    }
+    
+    internal async Task<TEntity> UpdateEntityAsync<TUpdateOptions>(string id, TUpdateOptions updateOptions, CancellationToken cancellationToken) where TUpdateOptions : IUpdateOptions
+    {
+        var content = JsonContent.Create(updateOptions, options: _jsonSerializerOptions);
+        await content.LoadIntoBufferAsync();
+        
+        var request = new HttpRequestMessage()
+        {
+            RequestUri = _httpClient.InstanceUrl(_endpoint, id),
+            Method = HttpMethod.Put,
             Content = content,
         };
         

@@ -4,7 +4,7 @@ using Close.Services.Interfaces;
 
 namespace Close.Services;
 
-public class Leads : Service, IRetrievable<Lead>, IListable<Lead>, ICreatable<Lead, LeadCreateOptions>, IDeletable
+public class Leads : Service, IRetrievable<Lead>, IListable<Lead>, ICreatable<Lead, LeadCreateOptions>, IUpdatable<Lead, LeadUpdateOptions>, IDeletable
 {
     public Leads(CloseClient closeClient) : base(closeClient, "lead")
     {
@@ -28,5 +28,10 @@ public class Leads : Service, IRetrievable<Lead>, IListable<Lead>, ICreatable<Le
     public async Task DeleteAsync(string id, CancellationToken cancellationToken = default)
     {
         await _request.DeleteEntityAsync(id, cancellationToken);
+    }
+
+    public async Task<Lead> UpdateAsync(string id, LeadUpdateOptions updateOptions, CancellationToken cancellationToken = default)
+    {
+        return await _request.UpdateEntityAsync(id, updateOptions, cancellationToken);
     }
 }
