@@ -5,7 +5,7 @@ namespace Close.Extensions;
 
 public static class UriExtensions
 {
-    public static Uri AddQueryParameters(this Uri uri, IRequestOptions requestOptions)
+    internal static Uri AddQueryParameters(this Uri uri, IRequestOptions requestOptions)
     {
         var builder = new UriBuilder(uri);
         var query = HttpUtility.ParseQueryString(uri.Query);
@@ -28,7 +28,7 @@ public static class UriExtensions
         return builder.Uri;
     }
 
-    public static Uri ClassUrl(this HttpClient httpClient, string endpoint)
+    internal static Uri ClassUrl(this HttpClient httpClient, string endpoint)
     {
         var builder = new UriBuilder(httpClient.BaseAddress!);
         builder.Path += $"{endpoint}/";
@@ -36,7 +36,7 @@ public static class UriExtensions
         return builder.Uri;
     }
 
-    public static Uri InstanceUrl(this HttpClient httpClient, string endpoint, string id)
+    internal static Uri InstanceUrl(this HttpClient httpClient, string endpoint, string id)
     {
         if (string.IsNullOrEmpty(id))
             throw new ArgumentException("The resource ID cannot be null or empty.", nameof(id));

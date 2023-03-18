@@ -9,7 +9,7 @@ namespace Close.Extensions;
 
 public static class ParameterExtensions
 {
-    public static List<KeyValuePair<string, object>> FlattenParamsValue(this object value, string keyPrefix)
+    internal static List<KeyValuePair<string, object>> FlattenParamsValue(this object value, string keyPrefix)
     {
         List<KeyValuePair<string, object>> flatParams;
 
@@ -55,7 +55,7 @@ public static class ParameterExtensions
         return flatParams;
     }
 
-    private static List<KeyValuePair<string, object>> FlattenParamsOptions(IRequestOptions options, string keyPrefix)
+    internal static List<KeyValuePair<string, object>> FlattenParamsOptions(IRequestOptions options, string keyPrefix)
     {
         var flatParams = new List<KeyValuePair<string, object>>();
         if (options == null)
@@ -80,7 +80,7 @@ public static class ParameterExtensions
         return flatParams;
     }
     
-    public static List<KeyValuePair<string, object>> FlattenParamsDictionary(IDictionary dictionary, string keyPrefix)
+    internal static List<KeyValuePair<string, object>> FlattenParamsDictionary(IDictionary dictionary, string keyPrefix)
     {
         var flatParams = new List<KeyValuePair<string, object>>();
         if (dictionary == null)
@@ -101,7 +101,7 @@ public static class ParameterExtensions
         return flatParams;
     }
 
-    private static List<KeyValuePair<string, object>> FlattenParamsList(IEnumerable list, string keyPrefix)
+    internal static List<KeyValuePair<string, object>> FlattenParamsList(IEnumerable list, string keyPrefix)
     {
         var flatParams = new List<KeyValuePair<string, object>>();
         if (list == null)
@@ -125,14 +125,14 @@ public static class ParameterExtensions
         return flatParams;
     }
 
-    private static List<KeyValuePair<string, object>> SingleParam(string key, object value)
+    internal static List<KeyValuePair<string, object>> SingleParam(string key, object value)
     {
         var flatParams = new List<KeyValuePair<string, object>>();
         flatParams.Add(new KeyValuePair<string, object>(key, value));
         return flatParams;
     }
 
-    private static string NewPrefix(string key, string keyPrefix)
+    internal static string NewPrefix(string key, string keyPrefix)
     {
         if (string.IsNullOrEmpty(keyPrefix))
         {
