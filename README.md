@@ -6,7 +6,7 @@ The unofficial .NET Core API client for [Close](https://close.com), supporting .
 
 This is _not_ an official project by Close. It's created and maintained by [Telzio](https://telzio.com), because the API client [mentioned](https://developer.close.com/topics/api-clients/#c) in Close' docs hasn't been updated in 7+ years.
 
----
+
 
 ## Usage
 The client currently targets .NET Core 6+.
@@ -18,7 +18,7 @@ Add the client to your service collection and specify your [API Key](https://hel
 
 *Important: You should never keep your credentials in your source code. Use a secrets manager instead!*
 
----
+
 
 ## Work In Progress
 We are currently working on migrating code from a client library we made internally at Telzio. Below is a list of what's currently implemented and what's in progress.
