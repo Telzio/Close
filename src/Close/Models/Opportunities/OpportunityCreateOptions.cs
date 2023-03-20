@@ -13,6 +13,9 @@ public class OpportunityCreateOptions : ICreateOptions
     
     [JsonPropertyName("contact_id")]
     public string ContactId { get; set; }
+    
+    [JsonPropertyName("user_id")]
+    public string UserId { get; set; }
 
     [JsonPropertyName("note")]
     public string Note { get; set; }
