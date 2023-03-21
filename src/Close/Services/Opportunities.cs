@@ -5,7 +5,7 @@ using Close.Services.Interfaces;
 
 namespace Close.Services;
 
-public class Opportunities : Service<Opportunity>, IRetrievable<Opportunity>, IListable<Opportunity, OpportunitiesListOptions>, ICreatable<Opportunity, OpportunityCreateOptions>, IUpdatable<Opportunity, LeadUpdateOptions>, IDeletable
+public class Opportunities : Service<Opportunity>, IRetrievable<Opportunity>, IListable<Opportunity, OpportunitiesListOptions>, ICreatable<Opportunity, OpportunityCreateOptions>, IUpdatable<Opportunity, OpportunityUpdateOptions>, IDeletable
 {
     public Opportunities(CloseClient closeClient, string endpoint) : base(closeClient, endpoint)
     {
@@ -26,7 +26,7 @@ public class Opportunities : Service<Opportunity>, IRetrievable<Opportunity>, IL
         return await _request.CreateEntityAsync(createOptions, cancellationToken);
     }
 
-    public async Task<Opportunity> UpdateAsync(string id, LeadUpdateOptions updateOptions, CancellationToken cancellationToken = default)
+    public async Task<Opportunity> UpdateAsync(string id, OpportunityUpdateOptions updateOptions, CancellationToken cancellationToken = default)
     {
         return await _request.UpdateEntityAsync(id, updateOptions, cancellationToken);
     }

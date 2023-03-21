@@ -5,14 +5,14 @@ namespace Close.Models.Opportunities;
 
 public class OpportunityUpdateOptions : IUpdateOptions
 {
-    [JsonPropertyName("lead_id")]
-    public string LeadId { get; set; }
-    
     [JsonPropertyName("status_id")]
     public string StatusId { get; set; }
     
     [JsonPropertyName("contact_id")]
     public string ContactId { get; set; }
+    
+    [JsonPropertyName("user_id")]
+    public string UserId { get; set; }
 
     [JsonPropertyName("note")]
     public string Note { get; set; }
