@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace Close.Services.Interfaces;
+namespace Close.Interfaces;
 
 public interface IHasUpdatedBy
 {

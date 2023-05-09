@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
+using Close.Interfaces;
 using Close.Models.Common;
 using Close.Models.Statuses;
-using Close.Services.Interfaces;
 
 namespace Close.Models.Opportunities;
 

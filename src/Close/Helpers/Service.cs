@@ -1,6 +1,6 @@
-using Close.Services.Interfaces;
+using Close.Interfaces;
 
-namespace Close.Services;
+namespace Close.Helpers;
 
 public abstract class Service<TEntity> where TEntity : ICloseEntity
 {
@@ -10,5 +10,4 @@ public abstract class Service<TEntity> where TEntity : ICloseEntity
     {
         _request = new Request<TEntity>(closeClient, endpoint);
     }
-
 }

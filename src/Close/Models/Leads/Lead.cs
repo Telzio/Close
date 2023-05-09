@@ -1,8 +1,8 @@
 using System.Text.Json.Serialization;
+using Close.Interfaces;
 using Close.Models.Common;
 using Close.Models.Contacts;
 using Close.Models.Opportunities;
-using Close.Services.Interfaces;
 
 namespace Close.Models.Leads;
 

@@ -1,6 +1,4 @@
-using Close.Models.Common;
-
-namespace Close.Services.Interfaces;
+namespace Close.Interfaces;
 
 public interface IUpdatable<TEntity, TUpdateOptions> where TEntity : ICloseEntity where TUpdateOptions : IUpdateOptions, new()
 {

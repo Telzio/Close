@@ -1,5 +1,5 @@
 using System.Text.Json.Serialization;
-using Close.Services.Interfaces;
+using Close.Interfaces;
 
 namespace Close.Models.Opportunities;
 

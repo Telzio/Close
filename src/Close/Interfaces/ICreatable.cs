@@ -1,6 +1,4 @@
-using Close.Models.Common;
-
-namespace Close.Services.Interfaces;
+namespace Close.Interfaces;
 
 public interface ICreatable<TEntity, TCreateOptions> where TEntity : ICloseEntity where TCreateOptions : ICreateOptions, new()
 {

@@ -2,11 +2,10 @@ using System.Net.Http.Json;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Close.Extensions;
-using Close.Helpers;
+using Close.Interfaces;
 using Close.Models.Common;
-using Close.Services.Interfaces;
 
-namespace Close.Services;
+namespace Close.Helpers;
 
 public class Request<TEntity> where TEntity : ICloseEntity
 {

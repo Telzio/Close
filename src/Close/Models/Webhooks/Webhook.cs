@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
+using Close.Interfaces;
 using Close.Models.Events;
-using Close.Services.Interfaces;
 
 namespace Close.Models.Webhooks;
 

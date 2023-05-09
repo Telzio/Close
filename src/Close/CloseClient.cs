@@ -9,6 +9,7 @@ public interface ICloseClient
     Opportunities Opportunities { get; }
     OpportunityStatuses OpportunityStatuses { get; }
     Pipelines Pipelines { get; }
+    Activity Activity { get; }
 }
 
 public class CloseClient : ICloseClient
@@ -25,4 +26,5 @@ public class CloseClient : ICloseClient
     public Opportunities Opportunities => new(this, "opportunity");
     public OpportunityStatuses OpportunityStatuses => new(this, "status/opportunity");
     public Pipelines Pipelines => new(this, "pipeline");
+    public Activity Activity => new(this, "activity");
 }

@@ -1,4 +1,4 @@
-namespace Close.Services.Interfaces;
+namespace Close.Interfaces;
 
 public interface IRequestOptions
 {
