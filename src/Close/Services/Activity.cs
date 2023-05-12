@@ -5,6 +5,7 @@ namespace Close.Services;
 public interface IActivity
 {
     Notes Notes { get; }
+    Calls Calls { get; }
 }
 
 public class Activity : IActivity
@@ -19,4 +20,5 @@ public class Activity : IActivity
     }
     
     public Notes Notes => new(_closeClient, $"{_endpoint}/note");
+    public Calls Calls => new(_closeClient, $"{_endpoint}/call");
 }

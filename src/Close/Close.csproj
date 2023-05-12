@@ -5,7 +5,7 @@
         <Nullable>disable</Nullable>
         <AssemblyName>Close</AssemblyName>
         <RootNamespace>Close</RootNamespace>
-        <Version>0.1.4</Version>
+        <Version>0.1.5</Version>
         <Authors>Peter Schroeder</Authors>
         <Company>Telzio, Inc.</Company>
         <Copyright>© 2013-2023 Telzio, Inc.</Copyright>
@@ -36,10 +36,6 @@
     <ItemGroup>
         <None Include="../../icon.png" Pack="true" PackagePath="\" />
         <None Include="../../README.md" Pack="true" PackagePath="\" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Models\Activities\" />
     </ItemGroup>
     
 </Project>
