@@ -1,5 +1,7 @@
 using System.Text.Json.Serialization;
 using Close.Interfaces;
+using Close.JsonConverters;
+using Close.Models.Common;
 using Close.Models.Contacts;
 
 namespace Close.Models.Leads;
@@ -26,7 +28,6 @@ public class LeadUpdateOptions : IUpdateOptions
         
     [JsonPropertyName("url")]
     public string Url { get; set; }
-        
-    [JsonPropertyName("custom")]
-    public Dictionary<string, object> Custom { get; set; }
+    
+    public CustomFields Custom { get; set; }
 }

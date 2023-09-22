@@ -113,7 +113,7 @@ public static class ParameterExtensions
         var index = 0;
         foreach (var value in list)
         {
-            var newPrefix = $"{keyPrefix}[{index}]";
+            var newPrefix = $"{keyPrefix}.{index}";
             flatParams.AddRange(FlattenParamsValue(value, newPrefix));
             index += 1;
         }
@@ -140,14 +140,14 @@ public static class ParameterExtensions
             return key;
         }
 
-        var i = key.IndexOf("[", StringComparison.Ordinal);
+        var i = key.IndexOf(".", StringComparison.Ordinal);
         if (i == -1)
         {
-            return $"{keyPrefix}[{key}]";
+            return $"{keyPrefix}.{key}";
         }
         else
         {
-            return $"{keyPrefix}[{key.Substring(0, i)}]{key.Substring(i)}";
+            return $"{keyPrefix}.{key.Substring(0, i)}]{key.Substring(i)}";
         }
     }
 }

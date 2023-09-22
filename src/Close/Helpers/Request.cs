@@ -3,6 +3,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Close.Extensions;
 using Close.Interfaces;
+using Close.JsonConverters;
 using Close.Models.Common;
 
 namespace Close.Helpers;
@@ -13,7 +14,7 @@ public class Request<TEntity> where TEntity : ICloseEntity
     private readonly HttpClient _httpClient;
     private readonly JsonSerializerOptions _jsonSerializerOptions = new()
     {
-        Converters = { new JsonStringEnumConverter() },
+        Converters = { new JsonStringEnumConverter(), new CustomFieldsJsonConverter() },
         DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault
     };
     
@@ -76,7 +77,7 @@ public class Request<TEntity> where TEntity : ICloseEntity
             Method = HttpMethod.Put,
             Content = content,
         };
-        
+
         return await SendAsync<TEntity>(request, cancellationToken);
     }
     
