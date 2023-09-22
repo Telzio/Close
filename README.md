@@ -1,5 +1,5 @@
 # Close
-[![NuGet](https://img.shields.io/nuget/v/close.svg)](https://www.nuget.org/packages/close/)
+[![NuGet](https://img.shields.io/nuget/v/close?color=blue)](https://www.nuget.org/packages/close/)
 ![MIT](https://img.shields.io/github/license/telzio/close)
 
 The unofficial .NET Core API client for [Close](https://close.com), supporting .NET Core 6+
