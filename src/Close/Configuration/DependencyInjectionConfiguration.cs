@@ -4,9 +4,9 @@ namespace Close.Configuration;
 
 public static class DependencyInjectionConfiguration
 {
-    public static IServiceCollection AddCloseClient(this IServiceCollection serviceCollection, string apiKey, Action<CloseServiceConfiguration> configure = null)
+    public static IServiceCollection AddCloseClient(this IServiceCollection serviceCollection, string apiKey, Action<HttpConfiguration> configure = null)
     {
-        CloseServiceConfiguration.Configure(serviceCollection, apiKey, configure);
+        HttpConfiguration.Configure(serviceCollection, apiKey, configure);
         return serviceCollection;
     }
 }

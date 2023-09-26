@@ -1,15 +1,20 @@
-﻿using Close.Services;
+﻿using Close.Helpers;
+using Close.Models;
 
 namespace Close;
 
 public interface ICloseClient
 {
-    Leads Leads { get; }
-    LeadStatuses LeadStatuses { get; }
-    Opportunities Opportunities { get; }
-    OpportunityStatuses OpportunityStatuses { get; }
-    Pipelines Pipelines { get; }
-    Activity Activity { get; }
+    CloseService<Lead, ListRequestOptions> Leads { get; }
+    CloseService<Contact, ListRequestOptions> Contacts { get; }
+    CloseService<LeadStatus, ListRequestOptions> LeadStatuses { get; }
+    CloseService<Opportunity, ListRequestOptions> Opportunities { get; }
+    CloseService<OpportunityStatus, ListRequestOptions> OpportunityStatuses { get; }
+    CloseService<Pipeline, ListRequestOptions> Pipelines { get; }
+    CloseService<CustomObject, CustomObjectListRequestOptions> CustomObjects { get; }
+    CloseService<Note, ListRequestOptions> Notes { get; }
+    CloseService<Call, ListRequestOptions> Calls { get; }
+    CloseService<IntegrationLink, ListRequestOptions> IntegrationLinks { get; }
 }
 
 public class CloseClient : ICloseClient
@@ -20,11 +25,15 @@ public class CloseClient : ICloseClient
     {
         _httpClient = httpClient;
     }
-
-    public Leads Leads => new(this, "lead");
-    public LeadStatuses LeadStatuses => new(this, "status/lead");
-    public Opportunities Opportunities => new(this, "opportunity");
-    public OpportunityStatuses OpportunityStatuses => new(this, "status/opportunity");
-    public Pipelines Pipelines => new(this, "pipeline");
-    public Activity Activity => new(this, "activity");
+    
+    public CloseService<Lead, ListRequestOptions> Leads => new(this, "lead");
+    public CloseService<Contact, ListRequestOptions> Contacts => new(this, "contact");
+    public CloseService<LeadStatus, ListRequestOptions> LeadStatuses => new(this, "status/lead");
+    public CloseService<Pipeline, ListRequestOptions> Pipelines => new(this, "pipeline");
+    public CloseService<Opportunity, ListRequestOptions> Opportunities => new(this, "opportunity");
+    public CloseService<OpportunityStatus, ListRequestOptions> OpportunityStatuses => new(this, "status/opportunity");
+    public CloseService<CustomObject, CustomObjectListRequestOptions> CustomObjects => new(this, "custom_object");
+    public CloseService<Note, ListRequestOptions> Notes => new(this, "activity/note");
+    public CloseService<Call, ListRequestOptions> Calls => new(this, "activity/call");
+    public CloseService<IntegrationLink, ListRequestOptions> IntegrationLinks => new(this, "integration_link");
 }

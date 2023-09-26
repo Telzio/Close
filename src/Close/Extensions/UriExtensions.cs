@@ -1,6 +1,5 @@
 using System.Web;
-using Close.Interfaces;
-using Close.Models.Common;
+using Close.Models.Interfaces;
 
 namespace Close.Extensions;
 

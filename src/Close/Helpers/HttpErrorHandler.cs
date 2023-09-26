@@ -1,31 +1,30 @@
 using System.Net.Http.Json;
+using System.Text.Json;
 using Close.Models.Exceptions;
 
 namespace Close.Helpers;
 
 public static class HttpErrorHandler
 {
-    public static async Task HandleErrorResponseAsync(this HttpResponseMessage httpResponseMessage)
+    public static async Task HandleErrorResponseAsync(this HttpResponseMessage httpResponseMessage, HttpRequestMessage httpRequestMessage)
     {
         if (!httpResponseMessage.IsSuccessStatusCode)
         {
-            if (httpResponseMessage.Content.Headers.ContentType?.MediaType == "application/json")
+            string payload = null;
+            if (httpRequestMessage.Content?.Headers.ContentType?.MediaType == "application/json")
             {
-                var errorResponse = await httpResponseMessage.Content.ReadFromJsonAsync<ErrorResponse>();
-                if (!string.IsNullOrEmpty(errorResponse?.Error))
-                {
-                    throw new CloseClientException(errorResponse.Error, httpResponseMessage);
-                }
+                payload = await httpRequestMessage.Content.ReadAsStringAsync();
             }
 
-            try
+            var responseString = await httpResponseMessage.Content.ReadAsStringAsync();
+
+            if (httpResponseMessage.Content.Headers.ContentType?.MediaType == "application/json" && !string.IsNullOrEmpty(responseString))
             {
-                httpResponseMessage.EnsureSuccessStatusCode();
+                var errorResponse = JsonSerializer.Deserialize<ApiError>(responseString);
+                throw new CloseException(errorResponse.Error ?? httpResponseMessage.ReasonPhrase, httpResponseMessage, httpRequestMessage, payload, errorResponse);
             }
-            catch (Exception e)
-            {
-                throw new CloseClientException(e.Message, httpResponseMessage);
-            }
+            
+            throw new CloseException(string.IsNullOrEmpty(responseString) ? httpResponseMessage.ReasonPhrase : responseString, httpResponseMessage, httpRequestMessage, payload);
         }
     }
 }
