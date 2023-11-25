@@ -7,5 +7,6 @@ public enum ObjectType
     call,
     opportunity,
     sms,
-    taskcompleted
+    taskcompleted,
+    custom_object,
 }

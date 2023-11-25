@@ -16,7 +16,7 @@ public class CloseRequest<TEntity> where TEntity : ICloseEntity
     private readonly JsonSerializerOptions _jsonSerializerOptions = new()
     {
         Converters = { new JsonStringEnumConverter() },
-        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault
+        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
     };
     
     public CloseRequest(CloseClient closeClient, string endpoint)
@@ -27,9 +27,11 @@ public class CloseRequest<TEntity> where TEntity : ICloseEntity
     
     internal async Task<T> GetEntityAsync<T>(string id, CancellationToken cancellationToken) where T : TEntity
     {
+        var uri = _httpClient.InstanceUrl(_endpoint, id);
+        
         var request = new HttpRequestMessage()
         {
-            RequestUri = _httpClient.InstanceUrl(_endpoint, id),
+            RequestUri = uri, 
             Method = HttpMethod.Get,
         };
 
@@ -91,14 +93,30 @@ public class CloseRequest<TEntity> where TEntity : ICloseEntity
         };
         
         var response = await _httpClient.SendAsync(request, cancellationToken);
-        await response.HandleErrorResponseAsync(request);
+        await response.HandleErrorResponseAsync(request, cancellationToken);
     }
     
+    public async Task<SearchResults<T>> SearchAsync<T, TT>(TT query, CancellationToken cancellationToken) where T : TEntity where TT : SearchRequest  
+    {
+        var content = JsonContent.Create(query, options: _jsonSerializerOptions);
+        await content.LoadIntoBufferAsync();
+
+        var request = new HttpRequestMessage()
+        {
+            RequestUri = _httpClient.ClassUrl("data/search"),
+            Method = HttpMethod.Post,
+            Content = content,
+        };
+        
+        return await SendAsync<SearchResults<T>>(request, cancellationToken);
+    }
     
     private async Task<T> SendAsync<T>(HttpRequestMessage request, CancellationToken cancellationToken) 
     {
         var response = await _httpClient.SendAsync(request, cancellationToken);
-        await response.HandleErrorResponseAsync(request);
-        return await response.Content.ReadFromJsonAsync<T>(_jsonSerializerOptions);
+        var stringResponse = await response.Content.ReadAsStringAsync(cancellationToken:cancellationToken);
+        await response.HandleErrorResponseAsync(request, cancellationToken);
+        var result = JsonSerializer.Deserialize<T>(stringResponse, _jsonSerializerOptions);
+        return result;
     }
 }

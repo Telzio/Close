@@ -6,17 +6,17 @@ namespace Close.Helpers;
 
 public static class HttpErrorHandler
 {
-    public static async Task HandleErrorResponseAsync(this HttpResponseMessage httpResponseMessage, HttpRequestMessage httpRequestMessage)
+    public static async Task HandleErrorResponseAsync(this HttpResponseMessage httpResponseMessage, HttpRequestMessage httpRequestMessage, CancellationToken ct)
     {
         if (!httpResponseMessage.IsSuccessStatusCode)
         {
             string payload = null;
             if (httpRequestMessage.Content?.Headers.ContentType?.MediaType == "application/json")
             {
-                payload = await httpRequestMessage.Content.ReadAsStringAsync();
+                payload = await httpRequestMessage.Content.ReadAsStringAsync(ct);
             }
 
-            var responseString = await httpResponseMessage.Content.ReadAsStringAsync();
+            var responseString = await httpResponseMessage.Content.ReadAsStringAsync(ct);
 
             if (httpResponseMessage.Content.Headers.ContentType?.MediaType == "application/json" && !string.IsNullOrEmpty(responseString))
             {

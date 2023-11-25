@@ -5,5 +5,9 @@ public enum EmailType
     office,
     home,
     direct,
+    work,
+    fax,
+    url,
+    mobile,
     other
 }

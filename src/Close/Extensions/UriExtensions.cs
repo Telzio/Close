@@ -42,7 +42,7 @@ public static class UriExtensions
             throw new ArgumentException("The resource ID cannot be null or empty.", nameof(id));
 
         var builder = new UriBuilder(httpClient.ClassUrl(endpoint));
-        builder.Path += id;
+        builder.Path += $"{id}/";
         
         return builder.Uri;
     }

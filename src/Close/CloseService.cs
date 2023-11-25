@@ -77,5 +77,18 @@ public class CloseService<TEntity, TListOptions> where TEntity : ICloseEntity wh
     }
     
     #endregion
+
+    #region SEARCH
+
+    public virtual async Task<SearchResults<TEntity>> SearchAsync<T>(T query, CancellationToken cancellationToken = default) where T : SearchRequest 
+    {
+        return await CloseRequest.SearchAsync<TEntity, T>(query, cancellationToken);
+    }
     
+    public virtual async Task<SearchResults<T>> SearchAsync<T, TT>(TT query, CancellationToken cancellationToken = default) where T : TEntity where TT : SearchRequest 
+    {
+        return await CloseRequest.SearchAsync<T, TT>(query, cancellationToken);
+    }
+
+    #endregion
 }
