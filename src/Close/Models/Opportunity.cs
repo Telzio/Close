@@ -94,5 +94,5 @@ public class Opportunity : ICloseEntity, IHasCreatedBy, IHasUpdatedBy
     public string CreatedByName { get; set; }
     
     [JsonPropertyName("date_created")]
-    public DateTimeOffset DateCreated { get; set; }
+    public DateTimeOffset? DateCreated { get; set; }
 }

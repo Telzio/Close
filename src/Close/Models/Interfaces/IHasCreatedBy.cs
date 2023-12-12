@@ -8,5 +8,5 @@ public interface IHasCreatedBy
     public string CreatedBy { get; set; }
     
     [JsonPropertyName("date_created")]
-    public DateTimeOffset DateCreated { get; set; }
+    public DateTimeOffset? DateCreated { get; set; }
 }

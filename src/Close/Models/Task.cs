@@ -64,7 +64,7 @@ public class Task : IHasCreatedBy, IHasUpdatedBy
     public string CreatedByName { get; set; }
         
     [JsonPropertyName("date_created")]
-    public DateTimeOffset DateCreated { get; set; }
+    public DateTimeOffset? DateCreated { get; set; }
         
     [JsonPropertyName("updated_by")]
     public string UpdatedBy { get; set; }

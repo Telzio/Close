@@ -39,7 +39,7 @@ public class Contact : ICloseEntity, IHasCreatedBy, IHasUpdatedBy
     public string CreatedBy { get; set; }
 
     [JsonPropertyName("date_created")]
-    public DateTimeOffset DateCreated { get; set; }
+    public DateTimeOffset? DateCreated { get; set; }
     
     [JsonPropertyName("updated_by")]
     public string UpdatedBy { get; set; }

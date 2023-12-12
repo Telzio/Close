@@ -24,7 +24,7 @@ public class CustomObject : ICloseEntity, IHasCreatedBy, IHasUpdatedBy
     public string CreatedByName { get; set; }
     
     [JsonPropertyName("date_created")]
-    public DateTimeOffset DateCreated { get; set; }
+    public DateTimeOffset? DateCreated { get; set; }
     
     [JsonPropertyName("created_by")]
     public string CreatedBy { get; set; }

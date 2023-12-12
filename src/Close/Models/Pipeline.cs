@@ -18,7 +18,7 @@ public class Pipeline : ICloseEntity, IHasCreatedBy, IHasUpdatedBy
     public string OrganizationId { get; set; }
     
     [JsonPropertyName("date_created")]
-    public DateTimeOffset DateCreated { get; set; }
+    public DateTimeOffset? DateCreated { get; set; }
 
     [JsonPropertyName("created_by")]
     public string CreatedBy { get; set; }
