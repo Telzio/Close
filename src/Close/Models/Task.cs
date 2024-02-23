@@ -31,7 +31,7 @@ public class Task : IHasCreatedBy, IHasUpdatedBy
     public DateTimeOffset? Date { get; set; }
 
     [JsonPropertyName("is_dateless")]
-    public bool IsDateless { get; set; }
+    public bool? IsDateless { get; set; }
     
     [JsonPropertyName("due_date")]
     public DateTimeOffset? DueDate { get; set; }
