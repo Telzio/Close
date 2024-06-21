@@ -7,6 +7,9 @@ public class Field
 {
     [JsonPropertyName("field_name")]
     public string FieldName { get; set; }
+    
+    [JsonPropertyName("custom_field_id")]
+    public string CustomFieldId { get; set; }
 
     [JsonPropertyName("object_type")]
     public ObjectType ObjectType { get; set; }

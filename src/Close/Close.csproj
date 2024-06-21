@@ -5,10 +5,10 @@
         <Nullable>disable</Nullable>
         <AssemblyName>Close</AssemblyName>
         <RootNamespace>Close</RootNamespace>
-        <Version>0.2.2</Version>
+        <Version>0.2.3</Version>
         <Authors>Peter Schroeder</Authors>
         <Company>Telzio, Inc.</Company>
-        <Copyright>© 2013-2023 Telzio, Inc.</Copyright>
+        <Copyright>© 2013-2024 Telzio, Inc.</Copyright>
         <Product>Close</Product>
         <Title>Close</Title>
         <Description>ASP.NET Core client for Close's API</Description>
