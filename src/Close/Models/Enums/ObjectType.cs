@@ -9,4 +9,7 @@ public enum ObjectType
     sms,
     taskcompleted,
     custom_object,
+    contact,
+    contact_email,
+    contact_phone
 }
